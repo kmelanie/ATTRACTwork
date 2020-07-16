@@ -19,7 +19,7 @@ filename = 'receptor_ligand.txt'
 ligand_name = sys.argv[1]
 receptor_name=sys.argv[2]
 distance_range=int(sys.argv[3])
-outputname = os.path.splitext(ligand_name)[0]+'_bound-and-flexsep.pdb'
+outputname = os.path.splitext(ligand_name)[0]+'_bound-and-flexsep-same.pdb'
 #print (filename)
 
 # open outputfile 
@@ -132,9 +132,11 @@ del alphabet_list[52:54]
 #    i-=n*26
 #    n-=m*26
 #    col = letters[m-1]+letters[n-1]+letters[i] if m>0 else letters[n-1]+letters[i] if n>0 else letters[i]
+  
 
 try: 
     ligand_out=sys.argv[4]
+    print('create cut_pos based on ligand')
     cut_list=[]
     for line in open(ligand_out):
         cut_line = line.split()
@@ -150,7 +152,6 @@ try:
    
 except:
     pass
-    
     
 for i in range(len(cut_pos)):
     cut1_residue_nr=cut_pos[i][0]+int(residue_offset)

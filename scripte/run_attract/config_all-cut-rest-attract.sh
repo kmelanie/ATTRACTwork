@@ -18,6 +18,7 @@ INPUT_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5
  
 
 RESULTS_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5/results
-RESULTS=/cutted_distance${DISTANCE}_config
+RESULTS=/cutted_distance${DISTANCE}_equalcutnr
 #/icgc/dkfzlsdf/analysis/B240/students/käser/workspace/SPRINT/results
+
 

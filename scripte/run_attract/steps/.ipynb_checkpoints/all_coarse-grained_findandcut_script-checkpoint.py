@@ -132,7 +132,24 @@ del alphabet_list[52:54]
 #    i-=n*26
 #    n-=m*26
 #    col = letters[m-1]+letters[n-1]+letters[i] if m>0 else letters[n-1]+letters[i] if n>0 else letters[i]
-  
+
+try: 
+    ligand_out=sys.argv[4]
+    cut_list=[]
+    for line in open(ligand_out):
+        cut_line = line.split()
+        cut_list.append(cut_line)
+    #print(cut_list)
+    offset=int(cut_list[0][1])
+    residue_offset=int(cut_list[1][2])
+    print('Used values determined in the ligands run:\n****\nOffset=', offset,'\nResidue Offset=',residue_offset)
+    cut_pos=[]
+    for cut in cut_list[2:]:
+        cut_pos.append([int(cut[0])-int(residue_offset), int(cut[1])-int(residue_offset)])
+    #print(cut_pos)
+   
+except:
+    pass
     
     
 for i in range(len(cut_pos)):

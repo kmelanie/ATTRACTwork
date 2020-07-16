@@ -22,7 +22,7 @@ source /home/melaniekaser/attract-master/generat/work/scripte/run_attract/config
 
 cd $INPUT_DIR/
 
-for d in [1-9]JCV/; do
+for d in [1-9]*/; do
 
         echo "$d"
 
@@ -66,6 +66,17 @@ for d in [1-9]JCV/; do
                 python $STEPS/all_attract-and-collect.py $pdbfile
                 cd $INPUT_DIR
         fi
+        
+    ###irmsd
+        if [ -f $RESULTS_DIR/$d/$RESULTS/ligandr/ligandr_bound-and-flexsep_final.dat ]
+        then
+                cd $RESULTS_DIR/$d/$RESULTS/
+                pdbfile=ligandr/ligandr_bound-and-flexsep.pdb
+                refepdbfile=ligandr-refe/ligandr-refe_bound-and-flexsep.pdb
+                python3 $STEPS/all_irmsd.py $pdbfile $refepdbfile
+                cd $INPUT_DIR
+        fi
+    
 
 
 done

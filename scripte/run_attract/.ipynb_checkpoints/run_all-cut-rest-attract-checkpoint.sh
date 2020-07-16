@@ -22,14 +22,14 @@ source /home/melaniekaser/attract-master/generat/work/scripte/run_attract/config
 
 cd $INPUT_DIR/
 
-for d in [1-9]*/; do
+for d in [1-9]JCV/; do
 
         echo "$d"
 
 	###cut
         mkdir -p $RESULTS_DIR/"$d"/$RESULTS
-        python $STEPS/all_coarse-grained_findandcut_script.py $RESULTS_DIR/$d/coarse_grained/ligandr-refe.pdb $RESULTS_DIR/$d/coarse_grained/receptorr-refe.pdb $DISTANCE>$RESULTS_DIR/"$d"/$RESULTS/out-refe.txt
         python $STEPS/all_coarse-grained_findandcut_script.py $RESULTS_DIR/$d/coarse_grained/ligandr.pdb $RESULTS_DIR/$d/coarse_grained/receptorr.pdb $DISTANCE>$RESULTS_DIR/"$d"/$RESULTS/out-unbound.txt
+        python $STEPS/all_coarse-grained_findandcut_script.py $RESULTS_DIR/$d/coarse_grained/ligandr-refe.pdb $RESULTS_DIR/$d/coarse_grained/receptorr-refe.pdb $DISTANCE $RESULTS_DIR/"$d"/$RESULTS/out-unbound.txt >$RESULTS_DIR/"$d"/$RESULTS/out-refe.txt
         mv $RESULTS_DIR/$d/coarse_grained/*bound-and-flexsep.pdb $RESULTS_DIR/$d/$RESULTS/
 	
 	

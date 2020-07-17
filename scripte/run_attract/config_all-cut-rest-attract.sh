@@ -22,3 +22,4 @@ RESULTS=/cutted_distance${DISTANCE}_equalcutnr
 #/icgc/dkfzlsdf/analysis/B240/students/käser/workspace/SPRINT/results
 
 
+

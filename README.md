@@ -21,11 +21,13 @@ To use the here provided scripts get following dependencies:
   - ligandr-refe.pdb 
 
 ## Run 
-- adjust in your configuration file (run_attract/config_all-cut-rest-attract.sh) all variables (bold written terms above) according to your pathes. Choose also your desired input parameters 
-  - **DISTANCE**
-  - **REST_DIHEDRALS**
-  - **REST_ANGLES**
-  - **REST_BOND** 
+- adjust in your configuration file (run_attract/config_all-cut-rest-attract.sh) all variables (bold written terms above) according to your pathes. Choose also your desired input parameters:
+  - **DISTANCE**: cutoff distance of C-alpha atoms used for selection of flexible amino acids during refinement 
+  
+  ... and restraining factors stabilizing the natural peptide conformation:
+  - **REST_DIHEDRALS**: stabilizes equi-dihedral with force constant. Four dihedrals can be regulated. 
+  - **REST_ANGLES**: stabilizes equi-angel with force constant. Four angles can be regulated.
+  - **REST_BOND**: stabilizes equi-distance with force constant. One bond can be regulated.
 
   ... or use the default values.  
 - to make various runs using the same dataset but different parameters change the name of your **RESULTS** directory in the configuration file to avoid overwriting of previous results. 

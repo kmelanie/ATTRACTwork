@@ -14,11 +14,10 @@ ATTRACTDIR=/home/melaniekaser/attract-master/bin
 DISTANCE=10
 
 ## Input/Output directory
-INPUT_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5
+INPUT_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5_attract_models
  
 
-RESULTS_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5/results
+RESULTS_DIR=/home/melaniekaser/attract-master/generat/work/benchmark5_attract_models/results
 RESULTS=/cutted_distance${DISTANCE}_equalcutnr
-#/icgc/dkfzlsdf/analysis/B240/students/käser/workspace/SPRINT/results
 
 

@@ -17,6 +17,7 @@
 #
 # Load the parameters
 #
+
 source /home/melaniekaser/attract-master/generat/work/scripte/run_attract/config_all-cut-rest-attract.sh
 
 cd $INPUT_DIR/

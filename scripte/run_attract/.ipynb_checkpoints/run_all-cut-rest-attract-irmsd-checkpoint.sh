@@ -37,7 +37,7 @@ for d in [1-9]*/; do
 	if ! [ -d $RESULTS_DIR/$d/$RESULTS/ligandr/ ]
         then
                 mkdir -p $RESULTS_DIR/$d/$RESULTS/ligandr/
-                python $STEPS/all_coarse-grained_adjusted-rest_script.py $RESULTS_DIR/$d/$RESULTS/ligandr_bound-and-flexsep.pdb >$RESULTS_DIR/$d/$RESULTS/rest_out-unbound.txt
+                python $STEPS/all_coarse-grained_adjusted-rest_script.py $RESULTS_DIR/$d/$RESULTS/ligandr_bound-and-flexsep.pdb "$REST_DIHEDRALS" "$REST_ANGLES" "$REST_BOND" >$RESULTS_DIR/$d/$RESULTS/rest_out-unbound.txt
                 mv $RESULTS_DIR/$d/$RESULTS/ligandr_* $RESULTS_DIR/$d/$RESULTS/ligandr/
         fi
 
@@ -45,7 +45,7 @@ for d in [1-9]*/; do
         then
 
                 mkdir -p $RESULTS_DIR/$d/$RESULTS/ligandr-refe/
-                python $STEPS/all_coarse-grained_adjusted-rest_script.py $RESULTS_DIR/$d/$RESULTS/ligandr-refe_bound-and-flexsep.pdb >$RESULTS_DIR/$d/$RESULTS/rest_out-refe.txt
+                python $STEPS/all_coarse-grained_adjusted-rest_script.py $RESULTS_DIR/$d/$RESULTS/ligandr-refe_bound-and-flexsep.pdb "$REST_DIHEDRALS" "$REST_ANGLES" "$REST_BOND" >$RESULTS_DIR/$d/$RESULTS/rest_out-refe.txt
                 mv $RESULTS_DIR/$d/$RESULTS/ligandr-refe_* $RESULTS_DIR/$d/$RESULTS/ligandr-refe/
         fi
 

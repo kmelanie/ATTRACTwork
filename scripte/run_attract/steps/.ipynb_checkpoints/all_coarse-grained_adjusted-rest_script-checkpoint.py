@@ -6,6 +6,7 @@ import re
 import sys
 import string
 import os
+import ast
 
 ###get input pdb file and output location as commandline argument
 filename = sys.argv[1]
@@ -231,11 +232,20 @@ with open(rest_file, 'w') as output:
             
 ###generate second block of output .rest file with restraints of angles, dihedrals and bonds
 
-###define restraints
+###get restraints from command line argument passed by variables defined in the config file
     restraints={}
-    restraints['rest_dihedrals']=[[3.1415,60.1],[0,60.1],[1.0,0.51],[-2.4,2.1]]
-    restraints['rest_angles']=[[2.02,55.1],[2.13,55.1],[2.13,55.1],[2.09,55.1]]
-    restraints['rest_bond']=[[1.35,300.1]]
+    rest_dihedrals=ast.literal_eval(sys.argv[2])
+    rest_angles=ast.literal_eval(sys.argv[3])
+    rest_bond=ast.literal_eval(sys.argv[4])
+    restraints['rest_dihedrals']=rest_dihedrals
+    restraints['rest_angles']=rest_angles
+    restraints['rest_bond']=rest_bond
+###define restraints hard coded if restraints are not yet defined in config file and passed by command line arguments
+    #restraints={}
+    #rest_dihedrals=[[3.1415,60.1],[0,60.1],[1.0,0.51],[-2.4,2.1]]
+    #restraints['rest_dihedrals']=rest_dihedrals
+    #restraints['rest_angles']=[[2.02,55.1],[2.13,55.1],[2.13,55.1],[2.09,55.1]]
+    #restraints['rest_bond']=[[1.35,300.1]]
     #print(restraints)
     
     print(" ", file=output)

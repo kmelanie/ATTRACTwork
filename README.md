@@ -1,5 +1,5 @@
 # ATTRACTwork
-The here provided workflow aims to refine the results of rigid body docking. All necessary scripts and software dependencies are included in the project folder (*scripte/run_attract/*) or in the gitHub repository "attract". 
+The here provided workflow aims to refine the results of rigid body docking. All necessary scripts and software dependencies are included in the project folder [(run_attract/)](https://github.com/kmelanie/ATTRACTwork/tree/master/run_attract) or in the [ATTRACT source directory](http://www.attract.ph.tum.de/services/ATTRACT/attract.tgz). 
 
 Please note: this workflow is still in developement, changes are added and old files could get removed.
 

@@ -45,7 +45,7 @@ with open('receptor_ligand.txt', 'w') as output:
     print('\t'.join(map(str, pdblist)), file=output)
     atom_nr+=1
     
-# create parser
+# create parser to find distance between C-alpha atoms of ligand and all C-alpha atoms of receptor
 parser = PDBParser()
 alphabet_str= string.ascii_uppercase
 alphabet_list=list(alphabet_str)
@@ -71,6 +71,7 @@ for i in list(string.ascii_uppercase):
 
 
 ### find distance between residue of ligand and all residues of receptor
+### two nested loops through all atoms of ligand and all atoms of receptor to find all residues within the given C-alpa distance threshold
 close_residues=[]
 for residue1 in chain_ligand:
     #print(residue1)
@@ -89,6 +90,10 @@ for residue1 in chain_ligand:
                     close_residues.append(residue1.get_full_id()[3][1])
                 #print(residue1.get_full_id()[3][1])
 #print(close_residues)
+
+#exclude first amino acid of ligand to avoid including receptor amino acids due to addition of neighbouring amino acids in following steps... 
+if close_residues[0] <= 1:
+    del close_residues[0]
 
 ### get dictionary with flexible residues in loop clusters:
 def grouper(iterable, threshold):
@@ -133,6 +138,7 @@ del alphabet_list[52:54]
 #    n-=m*26
 #    col = letters[m-1]+letters[n-1]+letters[i] if m>0 else letters[n-1]+letters[i] if n>0 else letters[i]
 
+### if ligand is already cutted, get flexible residues of ligand and use them as cut positions instead of the ones calculated in the lines above to enable comparasion of results
 try: 
     ligand_out=sys.argv[4]
     cut_list=[]
@@ -151,7 +157,7 @@ try:
 except:
     pass
     
-    
+#get residue numbers of flexible amino acids and write to standart output (out-unbound.txt or out-bound.txt)   
 for i in range(len(cut_pos)):
     cut1_residue_nr=cut_pos[i][0]+int(residue_offset)
     cut2_residue_nr=cut_pos[i][1]+int(residue_offset)
@@ -254,10 +260,8 @@ def line_prepender(filetoprep, line):
         f.write(str(line)+ '\n' + content)
         
 line_prepender(edit, chain_nr)
-#adapting format with awk command
 
-
-
+#adapting format with awk command to receive output in correct PDB format
 def awk_runner(inputfile, outputfile):
     cmd = r'''awk '/ATOM/{printf "%-4s%7d%1s%-5s%-4s%1s%4d%12.3f%8.3f%8.3f%2s%3d%8.3f%2d%5.2f \n", $1,$2," ",$3,$4,$5,$6,$7,$8,$9," ",$10,$11,$12,$13} !/ATOM/{print $1}' ''' + inputfile + " > " + outputfile
     os.system(cmd)

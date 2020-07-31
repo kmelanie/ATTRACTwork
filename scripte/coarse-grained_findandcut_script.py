@@ -44,7 +44,7 @@ with open('receptor_ligand.txt', 'w') as output:
     print('\t'.join(map(str, pdblist)), file=output)
     atom_nr+=1
     
-# create parser
+# create parser to find distance between C-alpha atoms of ligand and all C-alpha atoms of receptor
 parser = PDBParser()
 alphabet_str= string.ascii_uppercase
 alphabet_list=list(alphabet_str)
@@ -69,7 +69,7 @@ for i in list(string.ascii_uppercase):
 
 
 
-### find distance between residue of ligand and all residues of receptor
+### two nested loops threw all atoms of ligand and all atoms of receptor to find all residues within the given C-alpa distance threshold
 close_residues=[]
 for residue1 in chain_ligand:
     #print(residue1)

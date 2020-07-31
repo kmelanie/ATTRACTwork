@@ -1,0 +1,31 @@
+---
+title: "Energy_scores"
+output: html_document
+---
+```{r}
+df <- read.table("../attract-master/generat/work/new_scripts/energy_scores-sep.csv", 
+                 header = TRUE,
+                 sep = "\t")
+```
+
+```{r}
+df$energy_score_wo_restraining.start <- df$energy_score.start -df$restraining_energy_score.start
+df$end..6 <-df$end..2- df$end..4
+df$energy_score_refe_wo_restraining.start <- df$energy_score_refe.start- df$restraining_energy_score_refe.start
+df$end..7 <-df$end..3- df$end..5
+df$delta_energy_score_end_flex_minus_rig <- df$end..6 - df$end. 
+```
+
+```{r}
+#install.packages('dplyr', dependencies = TRUE)
+library(dplyr)
+str(df)
+
+df <- df %>%
+  mutate_if(is.numeric, round, digits = 3)
+df
+```
+```{r}
+write.table(df, file="../attract-master/generat/work/new_scripts/energy_scores-sep_wdiff.csv", sep="\t", row.names = FALSE)
+```
+
